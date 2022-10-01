@@ -2,14 +2,25 @@ import db, gui
 def button_click():
     a = gui.Choice()
     if (a == 1):
+        
         family = gui.Family_input()
         name = gui.Name_input()
         phone = gui.Phone_input()
         description = gui.Description_input()
-        db.Saving(family, name, phone, description)
+        print("Вы хотите использовать txt (1) или csv (2) формат:")
+        flag = int(input())
+        if flag == 1:
+            db.Saving(family, name, phone, description)
+        else: 
+            db.Saving_csv(family, name, phone, description)
+
     elif (a == 2):
-        book = db.get_base()
-        print(book)
+        print("Вы хотите использовать txt (1) или csv (2) формат:")
+        flag = int(input())
+        if flag == 1:
+            print(db.get_base())
+        elif flag == 2:
+            db.get_base_csv()
     elif(a == 3):
         book = db.get_base()
         b = gui.Choice_find()
